@@ -70,7 +70,25 @@ describe('Skin Deep Wrapper', () => {
   })
 
   describe('WrappedSubTree', () => {
-    it('does not wrap subTree return value if  subTree returns false', () => {
+    it('wraps every subTree of a returned array', () => {
+      class SomeComponent extends React.Component {
+        render () {
+          return (
+            <ul>
+              <li>foo</li>
+              <li>bar</li>
+            </ul>
+          )
+        }
+      }
+
+      const tree = sd.shallowRender(<SomeComponent />)
+      const subTrees = tree.everySubTree('li')
+
+      subTrees.map((sT) => assert.ok(sT.ref))
+    })
+
+    it('does not wrap subTree return value if subTree returns false', () => {
       class SomeComponent extends React.Component {
         render () {
           return <h1>Nothing really important</h1>

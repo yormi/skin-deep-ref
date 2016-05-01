@@ -25,7 +25,9 @@ const wrapFunction = (fn) => {
   return (...args) => {
     const tree = fn(...args)
 
-    if (tree) {
+    if (Array.isArray(tree)) {
+      return tree.map((t) => wrapTree(t))
+    } else if (tree) {
       return wrapTree(tree)
     } else {
       return false
