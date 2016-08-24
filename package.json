@@ -1,6 +1,6 @@
 {
   "name": "skin-deep-ref",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "a wrapper of skin-deep with support for refs",
   "main": "dist/skin_deep_wrapper.js",
   "scripts": {
